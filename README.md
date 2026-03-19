@@ -110,12 +110,16 @@ pip install -r requirements.txt
 
 If you are using **Windows + Python 3.12**, `pip install -r requirements.txt` may fail on `lmdb` with an error like `No module named patch_ng`.
 
+If you see `ModuleNotFoundError: No module named pkg_resources` when importing `models.AIDE`, install/upgrade `setuptools` (included in `requirements_infer.txt`).
+
 Recommended options:
 
 1. **For deployment/inference only (Notebook/Streamlit):**
 
 ```bash
 pip install -r requirements_infer.txt
+# if pkg_resources is still missing in an existing env:
+pip install -U setuptools
 ```
 
 This skips `lmdb` completely and is enough for local inference.
