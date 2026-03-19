@@ -134,6 +134,14 @@ For example, evaluating the progan_train model, run the following command:
 ./scripts/eval.sh --data_path dataset/progan/train --eval_data_path dataset/progan/eval --resume results/progan_train/progan_train.pth --eval True --output_dir results/progan_train
 ```
 
+### JupyterLab Deployment (Notebook)
+
+For JupyterLab users, we provide a deployment notebook with single-image and batch inference:
+
+- `deploy/aide_jupyterlab_deploy.ipynb`
+
+Open it in JupyterLab, set the checkpoint path in the config cell, and run cells top-to-bottom to get `P(fake)` and export CSV results.
+
 ### Local Deployment (Streamlit)
 
 If you want a local web demo that outputs the AI-generation probability variable `P(fake)`, run:
