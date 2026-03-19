@@ -1,7 +1,6 @@
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 import torch
-import clip
 import open_clip
 from .srm_filter_kernel import all_normalized_hpf_list
 import numpy as np

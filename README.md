@@ -106,6 +106,34 @@ Lastly, install the necessary packages and pycocotools.
 pip install -r requirements.txt 
 ```
 
+### Windows installation fix (`py-lmdb` / `patch-ng` error)
+
+If you are using **Windows + Python 3.12**, `pip install -r requirements.txt` may fail on `lmdb` with an error like `No module named patch_ng`.
+
+If you see `ModuleNotFoundError: No module named pkg_resources` when importing `models.AIDE`, install/upgrade `setuptools` (included in `requirements_infer.txt`).
+
+Recommended options:
+
+1. **For deployment/inference only (Notebook/Streamlit):**
+
+```bash
+pip install -r requirements_infer.txt
+# if pkg_resources is still missing in an existing env:
+pip install -U setuptools
+```
+
+This skips `lmdb` completely and is enough for local inference.
+
+2. **For full training environment:** use Python **3.10** as stated in this repo, then install:
+
+```bash
+pip install patch-ng
+set LMDB_PURE=1
+pip install -r requirements.txt
+```
+
+(For Linux/macOS, use `export LMDB_PURE=1` before pip install.)
+
 
 ## Get Started
 
