@@ -106,6 +106,30 @@ Lastly, install the necessary packages and pycocotools.
 pip install -r requirements.txt 
 ```
 
+### Windows installation fix (`py-lmdb` / `patch-ng` error)
+
+If you are using **Windows + Python 3.12**, `pip install -r requirements.txt` may fail on `lmdb` with an error like `No module named patch_ng`.
+
+Recommended options:
+
+1. **For deployment/inference only (Notebook/Streamlit):**
+
+```bash
+pip install -r requirements_infer.txt
+```
+
+This skips `lmdb` completely and is enough for local inference.
+
+2. **For full training environment:** use Python **3.10** as stated in this repo, then install:
+
+```bash
+pip install patch-ng
+set LMDB_PURE=1
+pip install -r requirements.txt
+```
+
+(For Linux/macOS, use `export LMDB_PURE=1` before pip install.)
+
 
 ## Get Started
 
@@ -134,6 +158,23 @@ For example, evaluating the progan_train model, run the following command:
 ./scripts/eval.sh --data_path dataset/progan/train --eval_data_path dataset/progan/eval --resume results/progan_train/progan_train.pth --eval True --output_dir results/progan_train
 ```
 
+### JupyterLab Deployment (Notebook)
+
+For JupyterLab users, we provide a deployment notebook with single-image and batch inference:
+
+- `deploy/aide_jupyterlab_deploy.ipynb`
+
+Open it in JupyterLab, set the checkpoint path in the config cell, and run cells top-to-bottom to get `P(fake)` and export CSV results.
+
+### Local Deployment (Streamlit)
+
+If you want a local web demo that outputs the AI-generation probability variable `P(fake)`, run:
+
+```bash
+streamlit run deploy/aide_local_deploy.py -- --checkpoint /path/to/checkpoint-best.pth --device cuda
+```
+
+Then open the local URL shown by Streamlit (default `http://localhost:8501`), upload an image, and the app will return `P(fake)` and `P(real)`.
 
 
 ## Dataset

@@ -1,0 +1,23 @@
+# Lightweight dependencies for AIDE inference/deployment (Notebook + Streamlit)
+# This file intentionally excludes lmdb to avoid Windows build issues.
+
+einops==0.6.1
+filelock==3.13.1
+ftfy==6.1.3
+kornia==0.7.2
+kornia_rs==0.1.2
+matplotlib==3.7.4
+numpy==1.24.3
+open-clip-torch==2.24.0
+openai-clip==1.0.1
+pandas==2.0.3
+Pillow==9.5.0
+scikit-image==0.20.0
+scikit-learn==1.3.2
+scipy==1.9.1
+streamlit==1.30.0
+tensorboardX==2.6.2.2
+timm==0.9.6
+torch==1.11.0
+torchvision==0.12.0
+tqdm==4.66.1
