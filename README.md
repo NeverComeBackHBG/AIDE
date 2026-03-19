@@ -134,6 +134,15 @@ For example, evaluating the progan_train model, run the following command:
 ./scripts/eval.sh --data_path dataset/progan/train --eval_data_path dataset/progan/eval --resume results/progan_train/progan_train.pth --eval True --output_dir results/progan_train
 ```
 
+### Local Deployment (Streamlit)
+
+If you want a local web demo that outputs the AI-generation probability variable `P(fake)`, run:
+
+```bash
+streamlit run deploy/aide_local_deploy.py -- --checkpoint /path/to/checkpoint-best.pth --device cuda
+```
+
+Then open the local URL shown by Streamlit (default `http://localhost:8501`), upload an image, and the app will return `P(fake)` and `P(real)`.
 
 
 ## Dataset
